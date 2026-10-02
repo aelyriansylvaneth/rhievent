@@ -1,0 +1,156 @@
+/* STREAMING_CHUNK:Defining global body and background styles... */
+body {
+background-color: #030000;
+color: #e5e5e5;
+overflow-x: hidden;
+background-image:
+radial-gradient(circle at 10% 20%, rgba(102, 0, 0, 0.15) 0%, transparent 40%),
+radial-gradient(circle at 90% 80%, rgba(204, 0, 0, 0.1) 0%, transparent 40%);
+background-attachment: fixed;
+}
+
+/* STREAMING_CHUNK:Styling premium cards... */
+.premium-card {
+background: linear-gradient(145deg, rgba(16, 5, 5, 0.8) 0%, rgba(3, 0, 0, 0.95) 100%);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(204, 0, 0, 0.2);
+border-radius: 1rem;
+box-shadow: 0 10px 30px -10px rgba(0,0,0,1), inset 0 1px 0 rgba(255,255,255,0.03);
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+position: relative;
+overflow: hidden;
+}
+
+.premium-card::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(204, 0, 0, 0.8), transparent);
+opacity: 0;
+transition: opacity 0.4s ease;
+}
+
+.premium-card:hover {
+transform: translateY(-3px);
+border-color: rgba(204, 0, 0, 0.5);
+box-shadow: 0 15px 40px -10px rgba(204, 0, 0, 0.2);
+}
+
+.premium-card:hover::before {
+opacity: 1;
+}
+
+/* STREAMING_CHUNK:Styling text gradients and tabs... */
+.text-crimson-gradient {
+background: linear-gradient(to bottom right, #ff4d4d, #cc0000, #660000);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.tab-btn {
+border-bottom: 2px solid transparent;
+}
+.tab-btn.active {
+border-bottom-color: #cc0000;
+color: #ff4d4d;
+background: linear-gradient(to top, rgba(204,0,0,0.1), transparent);
+}
+
+.elegant-input {
+background: rgba(0,0,0,0.5);
+border: 1px solid rgba(204,0,0,0.3);
+color: white;
+transition: all 0.3s;
+}
+.elegant-input:focus {
+outline: none;
+border-color: #ff4d4d;
+box-shadow: 0 0 15px rgba(204,0,0,0.3);
+}
+
+/* STREAMING_CHUNK:Styling brackets and discord embeds... */
+.bracket-match {
+border: 1px solid rgba(204,0,0,0.3);
+background: linear-gradient(90deg, rgba(16,5,5,0.9), rgba(0,0,0,0.8));
+position: relative;
+}
+.bracket-match::after {
+content: '';
+position: absolute;
+right: -20px;
+top: 50%;
+width: 20px;
+height: 1px;
+background: rgba(204,0,0,0.3);
+}
+
+.discord-embed {
+background-color: #2b2d31;
+border-left: 4px solid #ed4245;
+border-radius: 4px;
+}
+
+/* STREAMING_CHUNK:Styling bracket tree and connector lines... */
+.bracket-round {
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+}
+.bracket-team {
+padding: 8px 12px;
+background: linear-gradient(90deg, rgba(20,5,5,0.9), rgba(0,0,0,0.8));
+border: 1px solid rgba(204,0,0,0.4);
+border-radius: 4px;
+min-width: 160px;
+font-size: 0.875rem;
+display: flex;
+justify-content: space-between;
+box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+color: #ccc;
+}
+.bracket-team.winner {
+border-color: #ff4d4d;
+color: #fff;
+font-weight: bold;
+box-shadow: inset 0 0 15px rgba(204,0,0,0.2);
+}
+
+.bracket-group {
+position: relative;
+}
+.bracket-group::after {
+content: "";
+position: absolute;
+right: -24px;
+top: 25%;
+bottom: 25%;
+border-right: 2px solid rgba(255, 255, 255, 0.4);
+border-top: 2px solid rgba(255, 255, 255, 0.4);
+border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+width: 24px;
+border-radius: 0 4px 4px 0;
+z-index: 0;
+}
+.bracket-group::before {
+content: "";
+position: absolute;
+right: -48px;
+top: 50%;
+width: 24px;
+border-top: 2px solid rgba(255, 255, 255, 0.4);
+z-index: 0;
+}
+.bracket-single {
+position: relative;
+}
+.bracket-single::after {
+content: "";
+position: absolute;
+right: -48px;
+top: 50%;
+width: 48px;
+border-top: 2px solid rgba(255, 255, 255, 0.4);
+z-index: 0;
+}

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARSIP REWARD RHI — Crimson Edition</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        crimson: {
+                            light: '#ff4d4d',
+                            DEFAULT: '#cc0000',
+                            dark: '#660000',
+                            glow: 'rgba(204, 0, 0, 0.15)'
+                        },
+                        luxury: {
+                            black: '#030000',
+                            dark: '#080101',
+                            panel: '#100505',
+                        },
+                        silver: '#e5e5e5'
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'glow-pulse': 'glowPulse 3s infinite alternate',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        glowPulse: {
+                            '0%': { boxShadow: '0 0 15px rgba(204, 0, 0, 0.1)' },
+                            '100%': { boxShadow: '0 0 30px rgba(204, 0, 0, 0.3)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-crimson-dark selection:text-white font-sans">
+
+    <nav class="border-b border-crimson-dark/30 bg-luxury-dark/95 backdrop-blur-xl sticky top-0 z-50 shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4 w-full sm:w-auto">
+                <div class="w-12 h-12 rounded-lg bg-black border border-crimson flex items-center justify-center text-crimson-light font-serif font-bold text-2xl shadow-[0_0_20px_rgba(204,0,0,0.3)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-crimson opacity-20 animate-pulse"></div>
+                    <span class="relative z-10">R</span>
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-crimson-light font-semibold block mb-1">Rintama High Indonesia</span>
+                    <h2 class="font-serif text-white text-lg sm:text-xl font-bold tracking-wider leading-none">ARSIP REWARD PVP</h2>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-1 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-hide">
+                <button onclick="switchTab('finance')" id="nav-finance" class="tab-btn active px-4 py-3 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-calculator mr-2"></i> Arsip & Kalkulator
+                </button>
+                <button onclick="switchTab('tor')" id="nav-tor" class="tab-btn px-4 py-3 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-file-contract mr-2"></i> 1. TOR
+                </button>
+                <button onclick="switchTab('bracket')" id="nav-bracket" class="tab-btn px-4 py-3 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-sitemap mr-2"></i> 2. Bracket
+                </button>
+                <button onclick="switchTab('discord')" id="nav-discord" class="tab-btn px-4 py-3 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-brands fa-discord mr-2"></i> 3. Discord
+                </button>
+                <button onclick="switchTab('guideline')" id="nav-guideline" class="tab-btn px-4 py-3 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-book-open mr-2"></i> 4. Guideline
+                </button>
+                <button onclick="switchTab('partner')" id="nav-partner" class="tab-btn px-4 py-3 text-xs font-bold uppercase tracking-widest text-gray-400 transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-handshake mr-2"></i> 5. Media
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 relative z-10">
+        
+        <!-- SECTION: FINANCE & CALCULATOR -->
+        <section id="tab-finance" class="animate-fade-in-up">
+            <div class="text-center mb-10">
+                <h1 class="font-serif text-3xl sm:text-5xl font-bold text-white mb-3 tracking-wide">Event — 9 Oktober 2026</h1>
+                <p class="text-gray-400 uppercase tracking-[0.2em] text-sm">Sistem Kalkulasi & Transparansi Anggaran Terperinci</p>
+            </div>
+
+            <!-- Kalkulator Input Controls -->
+            <div class="premium-card p-6 mb-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center bg-black/60 border-crimson-dark/40">
+                <div class="w-full">
+                    <label class="block text-[10px] font-bold text-crimson-light uppercase tracking-wider mb-2">Total Donasi (IDR)</label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-serif font-bold">Rp</span>
+                        <input type="number" id="input-donasi" value="1000000" oninput="calculateRewards()" class="elegant-input w-full py-2 pl-10 pr-3 rounded-lg font-mono text-lg font-bold">
+                    </div>
+                </div>
+                <div class="w-full">
+                    <label class="block text-[10px] font-bold text-crimson-light uppercase tracking-wider mb-2">Total In-Game (Yen)</label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-serif font-bold">¥</span>
+                        <input type="number" id="input-ingame" value="375000" oninput="calculateRewards()" class="elegant-input w-full py-2 pl-10 pr-3 rounded-lg font-mono text-lg font-bold">
+                    </div>
+                </div>
+                <div class="w-full">
+                    <label class="block text-[10px] font-bold text-crimson-light uppercase tracking-wider mb-2">Biaya Daftar / Tim (Yen)</label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-serif font-bold">¥</span>
+                        <input type="number" id="input-daftar" value="40000" oninput="calculateRewards()" class="elegant-input w-full py-2 pl-10 pr-3 rounded-lg font-mono text-lg font-bold">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Kolom Kiri: RUPIAH -->
+                <div class="space-y-6">
+                    <div class="premium-card p-8 h-full flex flex-col">
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-crimson-dark/30">
+                            <h3 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                                <i class="fa-solid fa-rupiah-sign text-crimson text-xl"></i> Alokasi Donasi
+                            </h3>
+                            <span class="px-3 py-1 bg-crimson-dark/20 text-crimson-light text-[10px] font-bold rounded border border-crimson-dark/50">50% : 30% : 20%</span>
+                        </div>
+
+                        <!-- Prize Pool Section -->
+                        <div class="mb-6">
+                            <div class="flex justify-between items-end mb-4">
+                                <div>
+                                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Prize Pool (50%)</h4>
+                                    <div class="text-3xl font-mono font-bold text-white" id="val-prizepool">Rp 500.000</div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[10px] text-gray-500 uppercase tracking-widest block">Format</span>
+                                    <span class="text-crimson-light font-bold text-sm">2 vs 2</span>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <!-- Juara 1 -->
+                                <div class="bg-black/50 rounded-lg p-3 border border-white/5 hover:border-crimson/30 transition-colors">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-600 flex items-center justify-center text-black font-bold text-xs">1</div>
+                                            <span class="font-semibold text-silver text-sm">Juara 1 <span class="text-[10px] text-gray-500 font-normal ml-1">(50%)</span></span>
+                                        </div>
+                                        <div class="font-mono font-bold text-yellow-500 text-base" id="val-juara1-rp">Rp 250.000</div>
+                                    </div>
+                                    <div class="flex justify-between items-center pl-9 text-[11px] text-gray-400">
+                                        <span>Rincian per player (÷2)</span>
+                                        <span class="font-mono text-gray-300" id="val-j1-orang">Rp 125.000 / orang</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Juara 2 -->
+                                <div class="bg-black/50 rounded-lg p-3 border border-white/5 hover:border-crimson/30 transition-colors">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center text-black font-bold text-xs">2</div>
+                                            <span class="font-semibold text-silver text-sm">Juara 2 <span class="text-[10px] text-gray-500 font-normal ml-1">(30%)</span></span>
+                                        </div>
+                                        <div class="font-mono font-bold text-gray-300 text-base" id="val-juara2-rp">Rp 150.000</div>
+                                    </div>
+                                    <div class="flex justify-between items-center pl-9 text-[11px] text-gray-400">
+                                        <span>Rincian per player (÷2)</span>
+                                        <span class="font-mono text-gray-300" id="val-j2-orang">Rp 75.000 / orang</span>
+                                    </div>
+                                </div>
+
+                                <!-- Juara 3 -->
+                                <div class="bg-black/50 rounded-lg p-3 border border-white/5 hover:border-crimson/30 transition-colors">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-amber-700 flex items-center justify-center text-black font-bold text-xs">3</div>
+                                            <span class="font-semibold text-silver text-sm">Juara 3 <span class="text-[10px] text-gray-500 font-normal ml-1">(20%)</span></span>
+                                        </div>
+                                        <div class="font-mono font-bold text-orange-400 text-base" id="val-juara3-rp">Rp 100.000</div>
+                                    </div>
+                                    <div class="flex justify-between items-center pl-9 text-[11px] text-gray-400">
+                                        <span>Rincian per player (÷2)</span>
+                                        <span class="font-mono text-gray-300" id="val-j3-orang">Rp 50.000 / orang</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Server & Panitia -->
+                        <div class="grid grid-cols-2 gap-4 mt-auto">
+                            <div class="bg-black/40 rounded-lg p-4 border border-crimson-dark/20 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-1 h-full bg-crimson"></div>
+                                <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Server (30%)</h4>
+                                <div class="text-lg font-mono font-bold text-crimson-light mb-2" id="val-server">Rp 300.000</div>
+                                <p class="text-[9px] text-gray-500 leading-relaxed">Kebutuhan pengembangan RHI (discord, tiktok, nitro, promosi, event next).</p>
+                            </div>
+                            <div class="bg-black/40 rounded-lg p-4 border border-gray-800 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-1 h-full bg-gray-500"></div>
+                                <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Panitia (20%)</h4>
+                                <div class="text-lg font-mono font-bold text-silver mb-2" id="val-panitia">Rp 200.000</div>
+                                <p class="text-[9px] text-gray-500 leading-relaxed">Apresiasi untuk panitia yang terlibat penuh dalam pelaksanaan event.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: IN-GAME & INFO PENDAFTARAN -->
+                <div class="space-y-6">
+                    <div class="premium-card p-8">
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-crimson-dark/30">
+                            <h3 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                                <i class="fa-solid fa-gamepad text-crimson text-xl"></i> In-Game Reward
+                            </h3>
+                            <span class="px-3 py-1 bg-black text-silver text-[10px] font-bold rounded border border-gray-700">40% : 34.7% : 25.3%</span>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Total In-Game Reward</div>
+                            <div class="text-3xl font-mono font-bold text-crimson-gradient mb-4" id="val-ingame-total">¥ 375.000</div>
+
+                            <div class="space-y-2">
+                                <div class="bg-black/30 rounded p-3 border border-white/5">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-silver text-sm"><i class="fa-solid fa-trophy text-yellow-500 mr-2 text-xs"></i> Juara 1 (40%)</span>
+                                        <span class="font-mono font-bold text-white text-base" id="val-juara1-ig">¥ 150.000</span>
+                                    </div>
+                                    <div class="text-right text-[10px] text-gray-500 font-mono" id="val-j1-ig-orang">¥ 75.000 / orang</div>
+                                </div>
+                                <div class="bg-black/30 rounded p-3 border border-white/5">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-silver text-sm"><i class="fa-solid fa-medal text-gray-400 mr-2 text-xs"></i> Juara 2 (34.7%)</span>
+                                        <span class="font-mono font-bold text-white text-base" id="val-juara2-ig">¥ 130.000</span>
+                                    </div>
+                                    <div class="text-right text-[10px] text-gray-500 font-mono" id="val-j2-ig-orang">¥ 65.000 / orang</div>
+                                </div>
+                                <div class="bg-black/30 rounded p-3 border border-white/5">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-silver text-sm"><i class="fa-solid fa-award text-orange-400 mr-2 text-xs"></i> Juara 3 (25.3%)</span>
+                                        <span class="font-mono font-bold text-white text-base" id="val-juara3-ig">¥ 95.000</span>
+                                    </div>
+                                    <div class="text-right text-[10px] text-gray-500 font-mono" id="val-j3-ig-orang">¥ 47.500 / orang</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyeksi Pendaftaran -->
+                    <div class="premium-card p-6 border border-crimson-dark/50">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-serif text-lg font-bold text-white"><i class="fa-solid fa-users text-crimson mr-2"></i> Kalkulasi Pendaftaran</h4>
+                            <span class="text-[10px] bg-crimson px-2 py-1 rounded text-white font-bold">16 TIM MAX</span>
+                        </div>
+                        <div class="bg-black/50 p-4 rounded-lg flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-400 block mb-1">Proyeksi Pendapatan In-Game (16 Tim)</span>
+                                <div class="text-sm text-gray-500">16 x <span id="label-biaya-daftar">¥ 40.000</span></div>
+                            </div>
+                            <div class="text-xl font-mono font-bold text-yellow-500" id="val-total-daftar">¥ 640.000</div>
+                        </div>
+                        <p class="text-[10px] text-gray-500 mt-3 text-center italic">*Uang pendaftaran (in-game) digunakan untuk keperluan operasional/kas in-game panitia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transparency Note -->
+            <div class="mt-8 p-6 premium-card border-l-4 border-l-crimson bg-black/80">
+                <h4 class="font-serif text-lg font-bold text-white mb-2"><i class="fa-solid fa-scale-balanced text-crimson mr-2"></i> CATATAN TRANSPARANSI</h4>
+                <p class="text-sm text-gray-400 leading-relaxed mb-2">
+                    Pembagian dana donasi sebesar <strong>Rp 1.000.000</strong> dilakukan murni sesuai persentase yang telah ditetapkan. Seluruh penggunaan dana diharapkan dapat dipertanggungjawabkan.
+                </p>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Rincian penggunaan dana server dan panitia, serta aliran dana dari uang pendaftaran, wajib dicatat dan diperbarui pada arsip ini sebagai bentuk transparansi kepada donatur RHI dan dikoordinasikan bersama dengan <strong class="text-crimson-light">Team Aoki</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION: TOR -->
+        <section id="tab-tor" class="hidden animate-fade-in-up">
+            <div class="premium-card p-10 max-w-4xl mx-auto">
+                <div class="flex items-center gap-4 mb-8 border-b border-crimson-dark/30 pb-4">
+                    <div class="w-14 h-14 rounded-lg bg-crimson-dark/20 flex items-center justify-center border border-crimson">
+                        <i class="fa-solid fa-file-contract text-2xl text-crimson-light"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-serif text-2xl font-bold text-white">Term of Reference (TOR)</h2>
+                        <p class="text-sm text-gray-400">Regulasi & Aturan Turnamen PVP RHI</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6 text-gray-300 text-sm leading-relaxed">
+                    <div>
+                        <h3 class="text-crimson-light font-bold text-lg mb-2">1. Nama & Waktu Pelaksanaan</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Nama Event:</strong> Rintama High Indonesia PVP Tournament</li>
+                            <li><strong>Tanggal:</strong> Jumat, 9 Oktober 2026</li>
+                            <li><strong>Waktu:</strong> 20:00 WIB - Selesai</li>
+                            <li><strong>Platform:</strong> RHI Server (In-Game) & Discord</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-crimson-light font-bold text-lg mb-2">2. Format Pertandingan</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Pertandingan dilangsungkan dalam mode <strong>2 vs 2 PVP</strong>.</li>
+                            <li>Total slot maksimal adalah <strong>16 Tim</strong>.</li>
+                            <li>Sistem turnamen menggunakan <strong>Single Elimination</strong> (Gugur langsung).</li>
+                            <li>Match reguler dimainkan dalam skema <em>Best of 3 (BO3)</em>, sedangkan Grand Final <em>Best of 5 (BO5)</em>.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-crimson-light font-bold text-lg mb-2">3. Regulasi Pemain & Pendaftaran</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Setiap tim wajib membayar biaya pendaftaran sebesar <strong>¥ 40.000</strong> (In-Game).</li>
+                            <li>Setiap pemain wajib tergabung dalam server Discord resmi RHI.</li>
+                            <li>Pemain dilarang keras menggunakan program ilegal, <em>cheat</em>, <em>macro</em>, atau mengeksploitasi <em>bug</em> game.</li>
+                            <li>Toleransi keterlambatan adalah <strong>10 Menit</strong> dari waktu panggilan match. Melewati itu = Diskualifikasi (WO).</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-crimson-dark/20 p-4 border border-crimson-dark/50 rounded mt-4">
+                        <p class="font-bold text-white text-center mb-2"><i class="fa-solid fa-gavel text-crimson mr-2"></i> Keputusan Panitia</p>
+                        <p class="text-center text-xs">Seluruh keputusan yang diambil oleh panitia dan observer pada saat pertandingan bersifat mutlak dan tidak dapat diganggu gugat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: BRACKET -->
+        <section id="tab-bracket" class="hidden animate-fade-in-up">
+            <div class="premium-card p-10 overflow-auto min-h-[800px]">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 sticky left-0 gap-4">
+                    <div>
+                        <h2 class="font-serif text-2xl font-bold text-white"><i class="fa-solid fa-sitemap text-crimson mr-3"></i> Bracket 16 Tim</h2>
+                        <p class="text-sm text-gray-400 mt-1">Single Elimination (Klik nama tim untuk edit, klik '>' untuk memajukan tim)</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="resetBracket()" class="px-3 py-2 bg-gray-800 hover:bg-gray-700 rounded text-xs text-white border border-gray-600 transition-colors"><i class="fa-solid fa-rotate-left mr-1"></i> Reset Bracket</button>
+                        <span class="px-3 py-2 bg-black rounded text-xs text-green-400 border border-green-900/50 flex items-center"><i class="fa-solid fa-circle-dot text-[8px] mr-2 animate-pulse"></i> Live Interactive</span>
+                    </div>
+                </div>
+                
+                <!-- 16 Team Bracket Container -->
+                <div class="flex gap-12 min-w-[900px] py-10 min-h-[750px]">
+                    
+                    <!-- Round of 16 (8 Matches) -->
+                    <div class="bracket-round w-48 flex flex-col relative z-10">
+                        <div class="absolute -top-6 w-full text-center text-[10px] font-bold text-crimson uppercase tracking-widest">Round of 16</div>
+                        
+                        <!-- Group A -->
+                        <div class="bracket-group flex-1 flex flex-col justify-around">
+                            <!-- M1 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center"><span id="t1" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 1</span><button onclick="advance('t1', 't17')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center"><span id="t2" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 2</span><button onclick="advance('t2', 't17')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                            <!-- M2 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center"><span id="t3" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 3</span><button onclick="advance('t3', 't18')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center"><span id="t4" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 4</span><button onclick="advance('t4', 't18')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                        </div>
+
+                        <!-- Group B -->
+                        <div class="bracket-group flex-1 flex flex-col justify-around">
+                            <!-- M3 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center"><span id="t5" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 5</span><button onclick="advance('t5', 't19')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center"><span id="t6" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 6</span><button onclick="advance('t6', 't19')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                            <!-- M4 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center"><span id="t7" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 7</span><button onclick="advance('t7', 't20')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center"><span id="t8" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 8</span><button onclick="advance('t8', 't20')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                        </div>
+
+                        <!-- Group C -->
+                        <div class="bracket-group flex-1 flex flex-col justify-around">
+                            <!-- M5 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center"><span id="t9" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 9</span><button onclick="advance('t9', 't21')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center"><span id="t10" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 10</span><button onclick="advance('t10', 't21')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                            <!-- M6 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center"><span id="t11" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 11</span><button onclick="advance('t11', 't22')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center"><span id="t12" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 12</span><button onclick="advance('t12', 't22')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                        </div>
+
+                        <!-- Group D -->
+                        <div class="bracket-group flex-1 flex flex-col justify-around">
+                            <!-- M7 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center"><span id="t13" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 13</span><button onclick="advance('t13', 't23')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center"><span id="t14" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 14</span><button onclick="advance('t14', 't23')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                            <!-- M8 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center"><span id="t15" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 15</span><button onclick="advance('t15', 't24')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center"><span id="t16" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-white transition-colors">Team 16</span><button onclick="advance('t16', 't24')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quarter Finals (4 Matches) -->
+                    <div class="bracket-round w-48 flex flex-col relative z-10">
+                        <div class="absolute -top-6 w-full text-center text-[10px] font-bold text-crimson uppercase tracking-widest">Quarter Finals</div>
+                        
+                        <!-- Group E -->
+                        <div class="bracket-group flex-1 flex flex-col justify-around">
+                            <!-- M9 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/40"><span id="t17" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-500 transition-colors">TBD</span><button onclick="advance('t17', 't25')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/40"><span id="t18" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-500 transition-colors">TBD</span><button onclick="advance('t18', 't25')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                            <!-- M10 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/40"><span id="t19" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-500 transition-colors">TBD</span><button onclick="advance('t19', 't26')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/40"><span id="t20" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-500 transition-colors">TBD</span><button onclick="advance('t20', 't26')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                        </div>
+
+                        <!-- Group F -->
+                        <div class="bracket-group flex-1 flex flex-col justify-around">
+                            <!-- M11 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/40"><span id="t21" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-500 transition-colors">TBD</span><button onclick="advance('t21', 't27')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/40"><span id="t22" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-500 transition-colors">TBD</span><button onclick="advance('t22', 't27')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                            <!-- M12 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/40"><span id="t23" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-500 transition-colors">TBD</span><button onclick="advance('t23', 't28')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/40"><span id="t24" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-500 transition-colors">TBD</span><button onclick="advance('t24', 't28')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semi Finals (2 Matches) -->
+                    <div class="bracket-round w-48 flex flex-col relative z-10">
+                        <div class="absolute -top-6 w-full text-center text-[10px] font-bold text-crimson uppercase tracking-widest">Semi Finals</div>
+                        
+                        <!-- Group G -->
+                        <div class="bracket-group flex-1 flex flex-col justify-around">
+                            <!-- M13 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/20"><span id="t25" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-600 transition-colors">TBD</span><button onclick="advance('t25', 't29')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/20"><span id="t26" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-600 transition-colors">TBD</span><button onclick="advance('t26', 't29')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                            <!-- M14 -->
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/20"><span id="t27" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-600 transition-colors">TBD</span><button onclick="advance('t27', 't30')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="bracket-team group items-center border-dashed border-gray-600 bg-black/20"><span id="t28" contenteditable="true" class="outline-none focus:border-b border-crimson w-full truncate block text-gray-600 transition-colors">TBD</span><button onclick="advance('t28', 't30')" class="opacity-0 group-hover:opacity-100 ml-2 text-crimson hover:text-white transition-opacity"><i class="fa-solid fa-chevron-right"></i></button></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final (1 Match) -->
+                    <div class="bracket-round w-48 flex flex-col relative z-10">
+                        <div class="absolute -top-6 w-full text-center text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Grand Final</div>
+                        
+                        <div class="bracket-single flex-1 flex flex-col justify-center">
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team group items-center border-dashed border-yellow-800/50 bg-black/40"><span id="t29" contenteditable="true" class="outline-none focus:border-b border-yellow-500 w-full truncate block text-gray-700 transition-colors">Finalist A</span><button onclick="advance('t29', 't31')" class="opacity-0 group-hover:opacity-100 ml-2 text-yellow-500 hover:text-white transition-opacity"><i class="fa-solid fa-trophy"></i></button></div>
+                                <div class="bracket-team group items-center border-dashed border-yellow-800/50 bg-black/40"><span id="t30" contenteditable="true" class="outline-none focus:border-b border-yellow-500 w-full truncate block text-gray-700 transition-colors">Finalist B</span><button onclick="advance('t30', 't31')" class="opacity-0 group-hover:opacity-100 ml-2 text-yellow-500 hover:text-white transition-opacity"><i class="fa-solid fa-trophy"></i></button></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Champion -->
+                    <div class="bracket-round w-48 flex flex-col relative z-10">
+                        <div class="absolute -top-6 w-full text-center text-[10px] font-bold text-yellow-400 uppercase tracking-widest animate-pulse">Champion</div>
+                        
+                        <div class="flex-1 flex flex-col justify-center">
+                            <div class="flex flex-col gap-1">
+                                <div class="bracket-team items-center border border-yellow-500 bg-gradient-to-r from-yellow-900/40 to-transparent py-4 shadow-[0_0_20px_rgba(234,179,8,0.2)]">
+                                    <i class="fa-solid fa-crown text-yellow-500 mr-3 text-lg"></i>
+                                    <span id="t31" contenteditable="true" class="outline-none w-full truncate block text-yellow-400 font-bold text-lg">Winner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: DISCORD -->
+        <section id="tab-discord" class="hidden animate-fade-in-up">
+            <div class="premium-card p-10 max-w-3xl mx-auto">
+                <h2 class="font-serif text-2xl font-bold text-white mb-2"><i class="fa-brands fa-discord text-[#5865F2] mr-3"></i> Draft RHI News</h2>
+                <p class="text-sm text-gray-400 mb-8">Salin teks ini untuk di-post di channel Discord resmi RHI.</p>
+                
+                <div class="bg-[#313338] rounded-md overflow-hidden font-sans shadow-2xl relative">
+                    <!-- Discord Header Mockup -->
+                    <div class="bg-[#2b2d31] px-4 py-3 flex items-center border-b border-[#1e1f22]">
+                        <i class="fa-solid fa-hashtag text-[#80848e] mr-2"></i>
+                        <span class="text-white font-semibold">rhi-news</span>
+                    </div>
+
+                    <div class="p-4 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-[#ed4245] flex items-center justify-center shrink-0 shadow-lg">
+                            <img src="https://ui-avatars.com/api/?name=RHI&background=ed4245&color=fff&bold=true" alt="RHI" class="rounded-full">
+                        </div>
+                        <div class="w-full">
+                            <div class="flex items-baseline gap-2 mb-1">
+                                <span class="font-medium text-white hover:underline cursor-pointer">RHI Official Admin</span>
+                                <span class="text-[10px] bg-[#5865F2] px-1 rounded text-white font-semibold">SERVER</span>
+                                <span class="text-xs text-[#949ba4]">Today at 12:00 PM</span>
+                            </div>
+                            
+                            <!-- Discord Embed -->
+                            <div class="discord-embed p-4 mt-2 max-w-xl">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-xs font-bold text-white">📢 PENGUMUMAN TOURNAMENT PVP RHI 📢</span>
+                                </div>
+                                <div class="text-[#dbdee1] text-sm whitespace-pre-line leading-relaxed">
+                                    Halo warga Rintama High Indonesia! @everyone
+                                    Siapkan skill dan partner kalian, karena Turnamen PVP 2vs2 kembali hadir!
+
+                                    🗓️ **Tanggal:** Jumat, 9 Oktober 2026
+                                    ⏰ **Waktu:** 20:00 WIB
+                                    🎮 **Format:** 2 vs 2 (Maksimal 16 Tim)
+                                    💵 **Pendaftaran:** ¥ 40.000 / Tim (In-Game)
+
+                                    💰 **PRIZE POOL TERSEDIA!**
+                                    **Total Uang Tunai:** Rp 500.000
+                                    **Total In-Game Reward:** ¥ 375.000
+
+                                    Informasi detail, syarat, dan cara mendaftar dapat dilihat di channel <span class="text-[#5865F2] hover:underline cursor-pointer bg-[#5865F2]/20 px-1 rounded">#event-info</span>.
+
+                                    Hubungi <span class="bg-[#4e5058]/50 px-1 rounded hover:bg-[#4e5058] cursor-pointer">@Chaizawa</span> atau <span class="font-semibold text-white">fey</span> (in-game) untuk pendaftaran. Kuota sangat terbatas!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex justify-end">
+                    <button class="bg-[#5865F2] hover:bg-[#4752c4] text-white px-6 py-2 rounded font-semibold transition-colors text-sm" onclick="alert('Draft tersalin!')">
+                        <i class="fa-regular fa-copy mr-2"></i> Copy Draft
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: GUIDELINE -->
+        <section id="tab-guideline" class="hidden animate-fade-in-up">
+            <div class="premium-card p-10 max-w-4xl mx-auto">
+                <div class="flex items-center justify-between mb-8 border-b border-crimson-dark/30 pb-4">
+                    <h2 class="font-serif text-2xl font-bold text-white"><i class="fa-solid fa-book-open text-crimson mr-3"></i> Guideline & Format Pendaftaran</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-white mb-4">Langkah Pendaftaran:</h3>
+                        <ol class="space-y-4 text-sm text-gray-300">
+                            <li class="flex gap-3">
+                                <div class="w-6 h-6 rounded-full bg-crimson flex items-center justify-center font-bold text-white shrink-0 text-xs mt-0.5">1</div>
+                                <p>Pastikan kamu sudah memiliki partner (Tim beranggotakan 2 orang).</p>
+                            </li>
+                            <li class="flex gap-3">
+                                <div class="w-6 h-6 rounded-full bg-crimson flex items-center justify-center font-bold text-white shrink-0 text-xs mt-0.5">2</div>
+                                <p>Bayarkan biaya pendaftaran (In-game) sebesar <strong class="text-yellow-400">¥ 40.000</strong> kepada panitia melalui trade/sistem in-game: <br>
+                                    <span class="block mt-1 font-mono text-crimson-light">Hubungi IGN: fey / Chaizawa</span>
+                                </p>
+                            </li>
+                            <li class="flex gap-3">
+                                <div class="w-6 h-6 rounded-full bg-crimson flex items-center justify-center font-bold text-white shrink-0 text-xs mt-0.5">3</div>
+                                <p>Isi format pendaftaran yang disediakan (Sertakan screenshot bukti trade jika diperlukan).</p>
+                            </li>
+                            <li class="flex gap-3">
+                                <div class="w-6 h-6 rounded-full bg-crimson flex items-center justify-center font-bold text-white shrink-0 text-xs mt-0.5">4</div>
+                                <p>Kirimkan format pendaftaran ke DM Discord <strong class="text-[#5865F2]">@Chaizawa</strong>. Tunggu konfirmasi dan pemberian role peserta.</p>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="bg-black/60 border border-gray-800 rounded-lg p-6 relative">
+                        <div class="absolute top-2 right-2 cursor-pointer text-gray-500 hover:text-white transition-colors" title="Copy Format" onclick="alert('Format tersalin!')">
+                            <i class="fa-regular fa-copy"></i>
+                        </div>
+                        <h4 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 border-b border-gray-800 pb-2">Format DM Discord</h4>
+                        <pre class="font-mono text-sm text-green-400 whitespace-pre-wrap">Pendaftaran Turnamen RHI 2v2
+
+Nama Tim     : [Isi Nama Tim]
+Nama Pemain 1: [IGN In-Game 1]
+Discord ID 1 : [Tag Discord Player 1]
+Nama Pemain 2: [IGN In-Game 2]
+Discord ID 2 : [Tag Discord Player 2]
+
+*Fee Pendaftaran (¥40.000) sudah diserahkan ke [Nama Panitia]*</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: MEDIA PARTNER -->
+        <section id="tab-partner" class="hidden animate-fade-in-up">
+            <div class="premium-card p-10 max-w-5xl mx-auto">
+                <div class="text-center mb-10">
+                    <div class="w-16 h-16 rounded-full bg-crimson-dark/20 flex items-center justify-center mx-auto mb-4 border border-crimson-dark/50">
+                        <i class="fa-solid fa-handshake text-3xl text-crimson"></i>
+                    </div>
+                    <h2 class="font-serif text-3xl font-bold text-white mb-2">Media & Partnership</h2>
+                    <p class="text-gray-400 max-w-xl mx-auto">Paket kolaborasi untuk memeriahkan RHI PVP Tournament. Kami membuka kesempatan bagi streamer dan komunitas untuk berkolaborasi.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Tier 1 -->
+                    <div class="bg-black/40 border border-gray-800 rounded-xl p-6 text-center hover:border-crimson/50 transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-1">Community Partner</h3>
+                        <p class="text-xs text-gray-500 mb-4">Cross-promotion Server</p>
+                        <ul class="text-sm text-gray-300 text-left space-y-2 mb-6 min-h-[100px]">
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Logo kecil di banner</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Postingan di channel afiliasi</li>
+                        </ul>
+                        <button class="w-full py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:bg-gray-800 transition-colors text-sm font-semibold">Tersedia</button>
+                    </div>
+
+                    <!-- Tier 2 -->
+                    <div class="bg-gradient-to-b from-crimson-dark/40 to-black border border-crimson rounded-xl p-6 text-center relative transform md:-translate-y-4 shadow-[0_10px_30px_rgba(204,0,0,0.2)]">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-crimson text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Recommended</div>
+                        <h3 class="text-xl font-bold text-white mb-1">Official Streamer</h3>
+                        <p class="text-xs text-crimson-light mb-4">Live Caster Event</p>
+                        <ul class="text-sm text-gray-200 text-left space-y-2 mb-6 min-h-[100px]">
+                            <li><i class="fa-solid fa-check text-crimson-light mr-2"></i> Hak siar eksklusif turnamen</li>
+                            <li><i class="fa-solid fa-check text-crimson-light mr-2"></i> Logo medium di materi promo</li>
+                            <li><i class="fa-solid fa-check text-crimson-light mr-2"></i> Shoutout oleh MC</li>
+                        </ul>
+                        <button class="w-full py-2 bg-crimson hover:bg-red-700 rounded text-white transition-colors text-sm font-bold shadow-[0_0_15px_rgba(204,0,0,0.3)]">Tersedia (2 Slot)</button>
+                    </div>
+
+                    <!-- Tier 3 -->
+                    <div class="bg-black/40 border border-yellow-900/50 rounded-xl p-6 text-center hover:border-yellow-600 transition-colors">
+                        <h3 class="text-xl font-bold text-yellow-500 mb-1">Sponsor Resmi</h3>
+                        <p class="text-xs text-gray-500 mb-4">Dukungan Dana Tambahan</p>
+                        <ul class="text-sm text-gray-300 text-left space-y-2 mb-6 min-h-[100px]">
+                            <li><i class="fa-solid fa-check text-yellow-500 mr-2"></i> Logo besar di semua aset</li>
+                            <li><i class="fa-solid fa-check text-yellow-500 mr-2"></i> Custom role sponsor di Discord</li>
+                            <li><i class="fa-solid fa-check text-yellow-500 mr-2"></i> Naming rights (ex: RHI x Sponsor)</li>
+                        </ul>
+                        <button class="w-full py-2 border border-yellow-600 rounded text-yellow-500 hover:bg-yellow-900/20 transition-colors text-sm font-semibold">Hubungi Panitia</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
